@@ -1,0 +1,11 @@
+#!/bin/bash
+START_DATE=$(date +"%Y-%m-%d")
+END_DATE=$(date +"%Y-%m-%d" -d "+8 days")
+DATA_WIND_DIR="http://thredds.ucar.edu/thredds/ncss/grib/NCEP/GFS/Global_0p5deg/Best?var=u-component_of_wind_height_above_ground&var=v-component_of_wind_height_above_ground&north=30&west=-120&east=-60&south=0&horizStride=1&time_start="$START_DATE"T00%3A00%3A00Z&time_end="$END_DATE"T00%3A00%3A00Z&timeStride=1&vertCoord=&accept=netcdf"
+#DATA_WIND_DIR="http://thredds.ucar.edu/thredds/ncss/grib/NCEP/GFS/Global_0p5deg/GFS_Global_0p5deg_20160428_0000.grib2?var=u-component_of_wind_height_above_ground&var=v-component_of_wind_height_above_ground&north=30&west=-120&east=-60&south=0&horizStride=1&time_start="$START_DATE"T00%3A00%3A00Z&time_end="$END_DATE"T00%3A00%3A00Z&timeStride=1&vertCoord=&accept=netcdf"
+DATA_WAVE_DIR="http://thredds.ucar.edu/thredds/ncss/grib/NCEP/WW3/Global/Best?var=Direction_of_wind_waves_surface&var=Mean_period_of_wind_waves_surface&var=Primary_wave_direction_surface&var=Primary_wave_mean_period_surface&var=Significant_height_of_combined_wind_waves_and_swell_surface&var=Significant_height_of_wind_waves_surface&north=30&west=-120&east=-60&south=0&horizStride=1&time_start="$START_DATE"T00%3A00%3A00Z&time_end="$END_DATE"T00%3A00%3A00Z&timeStride=1&vertCoord=&accept=netcdf"
+#DATA_WAVE_DIR="http://thredds.ucar.edu/thredds/ncss/grib/NCEP/WW3/Global/WW3_Global_20160428_0000.grib2?var=Direction_of_wind_waves_surface&var=Mean_period_of_wind_waves_surface&var=Primary_wave_direction_surface&var=Primary_wave_mean_period_surface&var=Significant_height_of_combined_wind_waves_and_swell_surface&var=Significant_height_of_wind_waves_surface&north=30&west=-120&east=-60&south=0&horizStride=1&time_start="$START_DATE"T00%3A00%3A00Z&time_end="$END_DATE"T00%3A00%3A00Z&timeStride=1&vertCoord=&accept=netcdf"
+wget -O ./data/viento/data.nc $DATA_WIND_DIR 
+wget -O ./data/oleaje/data.nc $DATA_WAVE_DIR 
+cp ./data/viento/data.nc ./data/vientos/data_wind_$START_DATE.nc 	
+cp ./data/oleaje/data.nc ./data/oleaje/data_wave_$START_DATE.nc

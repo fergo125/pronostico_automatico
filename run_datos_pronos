@@ -1,0 +1,11 @@
+#!/bin/bash
+./MERCATOR.sh
+#./UNIDATA.sh
+./datos_puntos
+DATE=$(date +"%d-%m-%Y")
+idv animaciones.isl
+cp ./animaciones/temperatura/temperatura_regional.gif ./animaciones/temperatura/temperatura_regional_$DATE.gif
+cp ./animaciones/corrientes/corrientes_regional.gif ./animaciones/corrientes/corrientes_regional_$DATE.gif
+cp ./animaciones/oleaje/oleaje_regional.gif ./animaciones/oleaje/oleaje_regional_$DATE.gif
+exit 
+  

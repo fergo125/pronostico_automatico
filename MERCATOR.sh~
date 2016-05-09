@@ -1,0 +1,11 @@
+#!/bin/bash
+time=$(date +"%Y%m%d")
+time1=$(date +"%Y-%m-%d")
+time2=$(date +"%Y-%m-%d" -d "7 days")
+
+#MERCATOR OCEAN
+
+python "./motu-client-python/motu-client.py" -u bmatamorosa -p H7Mf2f8g -m http://atoll.mercator-ocean.fr/mfcglo-mercator-gateway-servlet/Motu -s http://purl.org/myocean/ontology/service/database#GLOBAL_ANALYSIS_FORECAST_PHYS_001_002-TDS -d global-analysis-forecast-phys-001-002 -x -100 -X -73.5 -y 0 -Y 18 -t "$time1 12:00:00" -T "$time2 12:00:00" -z 0.49 -Z 0.50 -v v -v u -v salinity -v ssh -v temperature -o temp_corr_data/
+cp data/temp_corr_data/global-analysis-forecast-phys-001-002-$time1.nc temp_corr_data/data.nc
+
+exit #  The right and proper method of "exiting" from a script.
